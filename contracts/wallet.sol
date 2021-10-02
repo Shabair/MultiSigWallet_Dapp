@@ -40,7 +40,7 @@ contract multiSigWallet {
         nextId++;
     }
 
-    function approvTransfers(uint256 id) external onlyApprover {
+    function approveTransfers(uint256 id) external onlyApprover {
         require(
             transfers[id].sent == false,
             "Transation has alredy been sent!"
@@ -50,7 +50,7 @@ contract multiSigWallet {
             "can't Approve Trasnation Twice!"
         );
 
-        approvals[msg.sender][id] == true;
+        approvals[msg.sender][id] = true;
         transfers[id].approvals++;
 
         if (transfers[id].approvals >= quorum) {
@@ -72,5 +72,13 @@ contract multiSigWallet {
         }
         require(allowed, "You not a Approver!");
         _;
+    }
+
+    function checkApprovals(address _addr, uint256 id)
+        external
+        view
+        returns (bool)
+    {
+        return approvals[_addr][id];
     }
 }
