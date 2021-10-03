@@ -41,10 +41,14 @@ function App() {
     return <div>Loading...!</div>;
   }
 
-  const newTransfer = (transfer) => {
+  const newTransfer = async (transfer) => {
+    console.log(await web3.eth.getBalance(accounts[0]));
     wallet.methods
       .craeteTransfer(transfer.amount, transfer.to)
-      .send({ from: accounts[0] });
+      .send({ from: accounts[0], gas: 3000000 })
+      .on("error", (error) => {
+        console.log(error);
+      });
   };
 
   const approveTransfer = (transferId) => {

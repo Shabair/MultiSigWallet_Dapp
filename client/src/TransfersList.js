@@ -5,7 +5,7 @@ const TransferList = ({ transfers, approveTransfer }) => {
     <div>
       <h2>Transfers</h2>
       <table>
-        <thed>
+        <thead>
           <tr>
             <td>Id</td>
             <td>Amount</td>
@@ -13,7 +13,7 @@ const TransferList = ({ transfers, approveTransfer }) => {
             <td>Approvals</td>
             <td>Sent</td>
           </tr>
-        </thed>
+        </thead>
         <tbody>
           {transfers?.map((transfer, index) => (
             <tr key={index}>
