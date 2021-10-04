@@ -32,7 +32,7 @@ const getWallet = async (web3) => {
   return new web3.eth.Contract(
     wallet.abi,
     deployedNetwork && deployedNetwork.address
-    // "0xa1c1764C2fE74f9F0b50aaA0E2cf72a478030Ba6"
+    // "0x3f7c27FDa52F119690c82e9247a45EB27362b603"
   );
 };
 
