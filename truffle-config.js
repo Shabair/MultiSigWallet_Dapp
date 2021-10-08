@@ -1,6 +1,8 @@
 // const path = require("path");
 const fs = require("fs");
-const privateKeys = fs.readFileSync(".secret.json").toString().trim();
+const privateKeys = JSON.parse(
+  fs.readFileSync(".secret.json").toString().trim()
+);
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -68,7 +70,7 @@ module.exports = {
       networkCheckTimeout: 1000000000,
       provider: () =>
         new HDWalletProvider(
-          privateKeys,
+          privateKeys.privateKeys,
           `https://ropsten.infura.io/v3/317a05b220d84193aa5ce84c634500e9`,
           0,
           3
